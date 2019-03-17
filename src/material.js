@@ -1,17 +1,11 @@
-import { MeshPhongMaterial, SmoothShading } from 'three'
+import { MeshBasicMaterial } from 'three'
 
-const material = new MeshPhongMaterial({
-  color: 0x555555,
-  specular: 0xffffff,
-  shininess: 50,
-  flatShading: SmoothShading,
+const material = new MeshBasicMaterial({
+  // color: 0xf06c00,
 })
 
-const explodedMaterial = new MeshPhongMaterial({
-  color: 0x225555,
-  specular: 0xffffff,
-  shininess: 50,
-  flatShading: SmoothShading,
+const explodedMaterial = new MeshBasicMaterial({
+  // color: 0xf06c00,
 })
 
 export { material, explodedMaterial }
