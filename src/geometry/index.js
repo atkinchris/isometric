@@ -6,6 +6,8 @@ import drawDoors from './doors'
 import drawPanels from './panels'
 import drawWheels from './wheels'
 
+import withEdges from '../utils/withEdges'
+
 const buildGeometry = scene => {
   const group = new Group()
   // group.rotateY(Math.PI / 2)
@@ -15,6 +17,8 @@ const buildGeometry = scene => {
   drawDoors(group)
   drawPanels(group)
   drawWheels(group)
+
+  Object.values(group.children).forEach(withEdges)
 
   scene.add(group)
 }
