@@ -7,6 +7,7 @@ import {
   SmoothShading,
   Shape,
   ShapeGeometry,
+  DoubleSide,
 } from 'three'
 
 const buildGeometry = scene => {
@@ -75,6 +76,34 @@ const buildGeometry = scene => {
     const rightPanel = new Mesh(panelGeometry, explodedMaterial)
     rightPanel.position.set(0, 0, -EXPLODE_DISTANCE)
     group.add(rightPanel)
+  }
+
+  {
+    const doorShape = new Shape()
+    doorShape.moveTo(0, 0)
+    doorShape.lineTo(BOX_WIDTH / 2, 0)
+    doorShape.lineTo(BOX_WIDTH / 2, BOX_HEIGHT)
+    doorShape.lineTo(0, BOX_HEIGHT)
+    doorShape.lineTo(0, 0)
+    const doorGeometry = new ShapeGeometry(doorShape)
+    doorGeometry.rotateY(Math.PI / 2)
+    doorGeometry.translate(3, -1.5, 0.5)
+
+    const leftDoor = new Mesh(doorGeometry, explodedMaterial)
+    leftDoor.position.set(EXPLODE_DISTANCE - 2, 0, 1)
+    group.add(leftDoor)
+    leftDoor.traverse(node => {
+      // eslint-disable-next-line no-param-reassign
+      node.material.side = DoubleSide
+    })
+
+    const rightDoor = new Mesh(doorGeometry, explodedMaterial)
+    rightDoor.position.set(EXPLODE_DISTANCE - 1, 0, -0.5)
+    group.add(rightDoor)
+    rightDoor.traverse(node => {
+      // eslint-disable-next-line no-param-reassign
+      node.material.side = DoubleSide
+    })
   }
 
   scene.add(group)
