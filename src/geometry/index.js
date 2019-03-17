@@ -10,7 +10,6 @@ import withEdges from '../utils/withEdges'
 
 const buildGeometry = scene => {
   const group = new Group()
-  // group.rotateY(Math.PI / 2)
 
   drawBox(group)
   drawCab(group)
@@ -21,6 +20,8 @@ const buildGeometry = scene => {
   Object.values(group.children).forEach(withEdges)
 
   scene.add(group)
+
+  return group
 }
 
 export default buildGeometry

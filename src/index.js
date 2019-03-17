@@ -13,10 +13,13 @@ const renderer = new WebGLRenderer({ alpha: true, antialias: true })
 renderer.setSize(WIDTH, HEIGHT)
 document.getElementById('root').appendChild(renderer.domElement)
 
+const group = buildGeometry(scene)
+
+// Debug positioning
+group.rotateY(0)
+// group.rotateY(Math.PI / 2)
+
 camera.position.set(20, 20, 20)
 // camera.position.set(0, 0, 30)
 camera.lookAt(scene.position)
-
-buildGeometry(scene)
-
 renderer.render(scene, camera)
