@@ -10,6 +10,7 @@ const scene = new Scene()
 const camera = new OrthographicCamera(-SIZE, SIZE, SIZE, -SIZE)
 
 const renderer = new WebGLRenderer({ alpha: true, antialias: true })
+renderer.setPixelRatio(2)
 renderer.setSize(WIDTH, HEIGHT)
 document.getElementById('root').appendChild(renderer.domElement)
 
