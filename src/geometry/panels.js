@@ -41,7 +41,7 @@ const drawPanels = group => {
   panelShape.holes.push(makeHole(5.5, 3.5))
   panelShape.holes.push(makeHole(5.5, 0.5))
 
-  const extrudeSettings = { amount: 0.1, bevelEnabled: false }
+  const extrudeSettings = { depth: 0.1, bevelEnabled: false }
   const panelGeometry = new ExtrudeGeometry(panelShape, extrudeSettings)
   panelGeometry.translate(-BOX_LENGTH / 2, -1.5, 0)
 
